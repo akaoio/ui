@@ -360,6 +360,45 @@ body {
   margin-top: calc(var(--margin) * 3);
 }
 
+/* Advanced Showcase */
+.advanced-showcase {
+  margin: calc(var(--margin) * 4) 0;
+}
+
+.showcase-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: calc(var(--gap) * 4);
+  margin-bottom: calc(var(--margin) * 4);
+}
+
+.showcase-item {
+  text-align: center;
+  padding: calc(var(--padding) * 2);
+  background: var(--surface);
+  border-radius: var(--radius);
+  min-height: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.showcase-item.full-width {
+  grid-column: 1 / -1;
+}
+
+.showcase-item h3 {
+  margin: 0 0 calc(var(--margin) * 2) 0;
+  color: var(--primary);
+}
+
+.showcase-item p {
+  margin-top: calc(var(--margin) * 2);
+  color: var(--color);
+  opacity: 0.8;
+}
+
 .feature-card {
   padding: calc(var(--padding) * 2);
   background: var(--surface);

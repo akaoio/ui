@@ -1,4 +1,6 @@
 import { html, css, init, render } from "./src/index.js";
+import "./src/components/yin-yang/index.js";
+import "./src/components/circle-nav/index.js";
 
 // Simple Router
 class Router {
@@ -94,6 +96,18 @@ class App {
     // Start router
     const content = document.getElementById("content");
     this.router.start(content);
+    
+    // Setup YinYang theme switcher
+    setTimeout(() => {
+      const themeSwitcher = document.getElementById("themeSwitcher");
+      if (themeSwitcher) {
+        themeSwitcher.addEventListener("theme-change", (e) => {
+          this.theme = e.detail.theme;
+          document.documentElement.setAttribute("data-theme", this.theme);
+          localStorage.setItem("theme", this.theme);
+        });
+      }
+    }, 100);
   }
 
   toggleTheme() {
@@ -123,9 +137,10 @@ class App {
               </nav>
 
               <div class="header-actions">
-                <button onclick="app.toggleTheme()" class="theme-toggle">
-                  ${this.theme === "light" ? "🌙" : "☀️"}
-                </button>
+                <yin-yang 
+                  id="themeSwitcher"
+                  theme="${this.theme}"
+                ></yin-yang>
                 <a
                   href="https://github.com/akaoio/ui"
                   class="github-link"

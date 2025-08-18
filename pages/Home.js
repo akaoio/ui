@@ -125,10 +125,56 @@ class MyButton extends Component {
       <!-- Component Showcase -->
       <section class="showcase">
         <div class="container">
-          <h2>Component Library</h2>
+          <h2>Advanced Components</h2>
           <p class="section-subtitle">
-            Ready-to-use components for rapid development
+            Beautiful, interactive components with pure CSS animations
           </p>
+          
+          <!-- Advanced Components Demo -->
+          <div class="advanced-showcase">
+            <div class="showcase-row">
+              <div class="showcase-item">
+                <h3>Yin-Yang Theme Switcher</h3>
+                <yin-yang></yin-yang>
+                <p>Elegant theme toggle with rotation animation</p>
+              </div>
+              
+              <div class="showcase-item">
+                <h3>Progress Indicators</h3>
+                <ui-progress value="75" type="bar" color="#667eea"></ui-progress>
+                <div style="margin-top: 20px;">
+                  <ui-progress value="60" type="circle" color="#764ba2"></ui-progress>
+                </div>
+                <p>Multiple styles: bar, circle, dots</p>
+              </div>
+              
+              <div class="showcase-item">
+                <h3>Interactive Tooltips</h3>
+                <div style="display: flex; gap: 20px; justify-content: center;">
+                  <ui-tooltip text="Top tooltip" position="top">
+                    <button class="button small">Hover me</button>
+                  </ui-tooltip>
+                  <ui-tooltip text="Right tooltip" position="right">
+                    <button class="button small">And me</button>
+                  </ui-tooltip>
+                </div>
+                <p>Flexible positioning and animations</p>
+              </div>
+            </div>
+
+            <div class="showcase-row">
+              <div class="showcase-item full-width">
+                <h3>Circle Navigation Menu</h3>
+                <div style="height: 350px; position: relative;">
+                  <circle-nav id="demoNav" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"></circle-nav>
+                </div>
+                <p>Expandable circular menu with smooth animations</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Basic Components -->
+          <h3 style="margin-top: 40px;">Basic Components</h3>
           <div class="component-preview">
             <div class="preview-grid">
               <div class="preview-item">
@@ -153,6 +199,7 @@ class MyButton extends Component {
               </div>
             </div>
           </div>
+          
           <div class="showcase-actions">
             <a href="/components" class="button primary">
               Explore All Components →
@@ -160,6 +207,30 @@ class MyButton extends Component {
           </div>
         </div>
       </section>
+      
+      <script type="module">
+        // Import and setup advanced components
+        import '../src/components/yin-yang/index.js';
+        import '../src/components/progress/index.js';
+        import '../src/components/tooltip/index.js';
+        import '../src/components/circle-nav/index.js';
+        
+        // Setup demo circle nav
+        setTimeout(() => {
+          const demoNav = document.getElementById('demoNav');
+          if (demoNav) {
+            const navItems = [
+              { icon: '🏠', label: 'Home' },
+              { icon: '📊', label: 'Dashboard' },
+              { icon: '👤', label: 'Profile' },
+              { icon: '⚙️', label: 'Settings' },
+              { icon: '📧', label: 'Messages' },
+              { icon: '🔔', label: 'Notifications' }
+            ];
+            demoNav.setAttribute('items', JSON.stringify(navItems));
+          }
+        }, 100);
+      </script>
 
       <!-- Code Example Section -->
       <section class="code-example">
