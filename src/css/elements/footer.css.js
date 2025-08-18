@@ -1,9 +1,9 @@
-import { css } from "core/UI.js"
+import { css } from "core/UI.js";
 
 export const styles = css`
-    :root {
-        --footer-height: var(--unit-7);
-    }
-`
+  :root {
+    --footer-height: var(--unit-7);
+  }
+`;
 
-export default styles
+export default styles;

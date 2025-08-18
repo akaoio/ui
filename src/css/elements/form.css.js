@@ -1,17 +1,17 @@
-import { css } from "core/UI.js"
+import { css } from "core/UI.js";
 
 export const styles = css`
-    :host {
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: var(--space);
-            margin: var(--space) 0;
-            & > * {
-                outline: none;
-            }
-        }
+  :host {
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space);
+      margin: var(--space) 0;
+      & > * {
+        outline: none;
+      }
     }
-`
+  }
+`;
 
-export default styles
+export default styles;

@@ -1,3 +1,3 @@
-import styles from "css/elements/button.css.js"
+import styles from "css/elements/button.css.js";
 
-export default styles
+export default styles;
