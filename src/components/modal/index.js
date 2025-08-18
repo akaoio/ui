@@ -1,4 +1,4 @@
-import { Context } from "core/Context.js";
+// import { Context } from "../../core/Context.js";
 import template from "./template.js";
 
 export class MODAL extends HTMLElement {
@@ -18,11 +18,16 @@ export class MODAL extends HTMLElement {
   }
 
   header = ({ value } = {}) => {
-    if (typeof this.subscription === "function") this.subscription();
-    this.subscription = Context.on(
-      ["dictionary", value],
-      [this.shadowRoot.querySelector("#header"), "innerText"],
-    );
+    // if (typeof this.subscription === "function") this.subscription();
+    // this.subscription = Context.on(
+    //   ["dictionary", value],
+    //   [this.shadowRoot.querySelector("#header"), "innerText"],
+    // );
+    // For now, just set the header directly
+    const headerEl = this.shadowRoot.querySelector("#header");
+    if (headerEl && value) {
+      headerEl.innerText = value;
+    }
   };
 
   connectedCallback() {
@@ -33,7 +38,7 @@ export class MODAL extends HTMLElement {
   }
 
   disconnectedCallback() {
-    this.subscription.off();
+    // this.subscription.off();
     this.querySelectorAll("dialog, .close, footer").forEach((el) =>
       el.removeEventListener("click", this.click),
     );
