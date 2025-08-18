@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Debug Imports</title>
+</head>
+<body>
+    <h1>Debug Import Errors</h1>
+    <pre id="output"></pre>
+    
+    <script type="module">
+        const output = document.getElementById('output');
+        
+        async function testImport(path) {
+            try {
+                output.textContent += `\nTrying to import: ${path}...`;
+                const module = await import(path);
+                output.textContent += ` ✓ SUCCESS`;
+                return module;
+            } catch (error) {
+                output.textContent += ` ✗ FAILED\n  Error: ${error.message}\n`;
+                throw error;
+            }
+        }
+        
+        async function runTests() {
+            try {
+                // Test core modules
+                await testImport('./src/core/UI.js');
+                await testImport('./src/core/Component.js');
+                
+                // Test CSS files
+                await testImport('./src/css/global.css.js');
+                
+                // Test main index
+                await testImport('./src/index.js');
+                
+                // Test app
+                await testImport('./app.js');
+                
+                output.textContent += '\n\n✓ All imports successful!';
+            } catch (error) {
+                output.textContent += '\n\n✗ Import chain failed';
+                console.error(error);
+            }
+        }
+        
+        runTests();
+    </script>
+</body>
+</html>

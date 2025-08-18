@@ -1,10 +1,16 @@
 import { BROWSER } from "../Utils/environments.js";
 
-export async function render(UI) {
+export async function render(element, target) {
   if (!BROWSER) return;
-  const main = await import(`UIs/${UI}/main.js`);
-  if (!main.render) return;
-  main.render();
+  // Simple render function that appends element to target
+  if (target && element) {
+    if (typeof element === 'string') {
+      target.innerHTML = element;
+    } else if (element instanceof Node) {
+      target.innerHTML = '';
+      target.appendChild(element);
+    }
+  }
 }
 
 export default render;

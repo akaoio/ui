@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Imports</title>
+</head>
+<body>
+    <h1>Testing imports...</h1>
+    <div id="log"></div>
+    <script type="module">
+        const log = document.getElementById('log');
+        
+        function addLog(msg, isError = false) {
+            const p = document.createElement('p');
+            p.textContent = msg;
+            p.style.color = isError ? 'red' : 'green';
+            log.appendChild(p);
+        }
+        
+        try {
+            addLog('Loading src/index.js...');
+            const ui = await import('./src/index.js');
+            addLog('✓ src/index.js loaded');
+            
+            addLog('Available exports: ' + Object.keys(ui).join(', '));
+            
+            addLog('Loading app.js...');
+            await import('./app.js');
+            addLog('✓ app.js loaded');
+            
+        } catch (error) {
+            addLog('✗ Error: ' + error.message, true);
+            addLog('Stack: ' + error.stack, true);
+        }
+    </script>
+</body>
+</html>

@@ -12,7 +12,7 @@
         
         // Test basic import
         try {
-            const { html } = await import('./src/core/UI/html.js');
+            const { html } = await import('../src/core/UI/html.js');
             document.getElementById('status').textContent = 'html import successful!';
             document.getElementById('status').style.color = 'green';
         } catch (error) {
