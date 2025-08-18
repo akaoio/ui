@@ -1,277 +1,177 @@
-# AKAO UI Framework
+# 🎨 AKAO UI Framework
 
-A powerful, lightweight vanilla JavaScript UI framework built on Web Components and modern web standards. No dependencies, no build step required, just pure performance.
+[![npm version](https://img.shields.io/npm/v/@akaoio/ui.svg)](https://www.npmjs.com/package/@akaoio/ui)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![GitHub Pages](https://img.shields.io/badge/demo-live-green.svg)](https://akaoio.github.io/ui/)
 
-## ✨ Features
+A powerful, modern UI framework built with pure vanilla JavaScript and Web Components. Zero dependencies, just web standards.
 
-- 🚀 **Zero Dependencies** - Pure vanilla JavaScript, no external frameworks
-- 🎯 **Web Standards** - Built on Web Components, Shadow DOM, and ES6 modules  
-- 🎨 **CSS-in-JS** - Scoped styles with template literals
-- ⚡ **Lightning Fast** - Minimal overhead, maximum performance
-- 🔒 **Type Safe** - Full TypeScript support
-- 📦 **Tree Shakeable** - Import only what you need
-- 🌙 **Theme Support** - Built-in dark/light themes
-- 🎭 **Animation Ready** - Smooth animations utilities included
+## ✨ [Live Demo & Documentation](https://akaoio.github.io/ui/)
 
-## 🚀 Quick Start
+Visit our interactive showcase to explore components, read documentation, and test code in the playground.
 
-### Installation
+## 🚀 Features
 
-#### From NPM Registry
+- **🔧 Zero Dependencies** - Pure vanilla JavaScript, no frameworks required
+- **📦 Web Components** - Native browser APIs with Shadow DOM encapsulation
+- **🎨 CSS-in-JS** - Scoped styles with template literals
+- **🌙 Theme System** - Built-in dark/light mode with CSS variables
+- **📱 Responsive** - Mobile-first design that works everywhere
+- **⚡ Lightning Fast** - Minimal overhead, maximum performance
+- **🔒 Type Safe** - Full TypeScript support
+- **🌳 Tree Shakeable** - Import only what you need
+- **♿ Accessible** - ARIA compliant with keyboard navigation
+
+## 📦 Installation
+
+### NPM (Recommended)
 ```bash
 npm install @akaoio/ui
-```
-
-#### From GitHub (Latest)
-```bash
-npm install github:akaoio/ui
 # or
-npm install https://github.com/akaoio/ui.git
+yarn add @akaoio/ui
+# or
+pnpm add @akaoio/ui
 ```
 
-#### Via CDN
+### CDN
 ```html
 <script type="module">
-  import { html, css, Component } from 'https://unpkg.com/@akaoio/ui/src/index.js'
+  import { html, css, Component } from 'https://unpkg.com/@akaoio/ui@latest/src/index.js';
 </script>
 ```
 
-### Basic Usage
+## 🎯 Quick Start
 
 ```javascript
-import { html, css, Component } from '@akaoio/ui'
+import { html, css } from '@akaoio/ui';
 
-// Create a custom component
-class MyButton extends Component {
+class MyButton extends HTMLElement {
     constructor() {
-        super()
-        
-        const template = html`
-            ${this.styles}
+        super();
+        this.attachShadow({ mode: 'open' });
+    }
+    
+    connectedCallback() {
+        this.shadowRoot.innerHTML = `
+            <style>
+                button {
+                    padding: 12px 24px;
+                    background: linear-gradient(135deg, #667eea, #764ba2);
+                    color: white;
+                    border: none;
+                    border-radius: 8px;
+                    font-size: 16px;
+                    cursor: pointer;
+                    transition: transform 0.2s;
+                }
+                
+                button:hover {
+                    transform: translateY(-2px);
+                }
+            </style>
             <button>
-                <slot>Click me!</slot>
+                <slot>Click me</slot>
             </button>
-        `
-        
-        this.shadowRoot.appendChild(template)
-    }
-    
-    get styles() {
-        return css`
-            :host {
-                display: inline-block;
-            }
-            button {
-                padding: 10px 20px;
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                color: white;
-                border: none;
-                border-radius: 4px;
-                cursor: pointer;
-                font-size: 16px;
-            }
-            button:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            }
-        `
+        `;
     }
 }
 
-// Register the component
-customElements.define('my-button', MyButton)
+customElements.define('my-button', MyButton);
 ```
 
-Use in HTML:
+Use it in your HTML:
 ```html
-<my-button>Custom Button</my-button>
+<my-button>Custom Text</my-button>
 ```
 
-## 📚 Core Concepts
+## 🧩 Built-in Components
 
-### Component Architecture
+### Core Components
+- **Button** - Versatile button with variants and states
+- **Modal** - Flexible modal dialogs
+- **Card** - Container component with header/footer slots
+- **Tabs** - Tabbed interface with multiple styles
+- **Icon** - SVG icon system
 
-Every component follows a simple pattern:
+### Form Components
+- **Input** - Enhanced text input
+- **Select** - Custom select dropdown
+- **Checkbox** - Styled checkbox
+- **Radio** - Radio button groups
+- **Form** - Form wrapper with validation
 
-1. **Extend Component class** - Provides lifecycle and utilities
-2. **Use Shadow DOM** - For style encapsulation
-3. **Template with html`` ** - Tagged template literals for HTML
-4. **Style with css`` ** - Tagged template literals for CSS
-5. **Register as Custom Element** - Make it usable in HTML
+### Layout Components
+- **Container** - Responsive container
+- **Grid** - CSS Grid system
+- **Flex** - Flexbox utilities
 
-### Three-File Component Structure (Optional)
+## 🎨 Theming
 
-For larger components, use this structure:
-
-```
-my-component/
-├── index.js       # Component class
-├── template.js    # HTML template
-└── styles.css.js  # Component styles
-```
-
-**index.js**
-```javascript
-import template from './template.js'
-
-export class MY_COMPONENT extends Component {
-    constructor() {
-        super()
-        this.shadowRoot.appendChild(template.cloneNode(true))
-    }
-}
-
-customElements.define('my-component', MY_COMPONENT)
-```
-
-**template.js**
-```javascript
-import styles from './styles.css.js'
-import { html } from '@akaoio/ui'
-
-export default html`
-    ${styles}
-    <div class="container">
-        <slot></slot>
-    </div>
-`
-```
-
-**styles.css.js**
-```javascript
-import { css } from '@akaoio/ui'
-
-export default css`
-    :host {
-        display: block;
-    }
-    .container {
-        padding: 20px;
-    }
-`
-```
-
-## 🎨 Styling
-
-### CSS-in-JS with Shadow DOM
-
-Styles are scoped to components using Shadow DOM:
+AKAO UI uses CSS custom properties for theming:
 
 ```javascript
-const styles = css`
-    :host {
-        /* Styles for the component itself */
-        display: block;
-    }
+// Light theme (default)
+document.documentElement.style.setProperty('--color-primary', '#667eea');
+document.documentElement.style.setProperty('--bg-primary', '#ffffff');
+
+// Dark theme
+document.documentElement.setAttribute('data-theme', 'dark');
+```
+
+### CSS Variables
+```css
+:root {
+    /* Colors */
+    --color-primary: #667eea;
+    --color-secondary: #764ba2;
+    --bg-primary: #ffffff;
+    --bg-secondary: #f7fafc;
     
-    :host([disabled]) {
-        /* Styles when disabled attribute is present */
-        opacity: 0.5;
-    }
+    /* Spacing */
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
     
-    :host-context(.dark-theme) {
-        /* Styles when inside .dark-theme */
-        background: #333;
-    }
-`
-```
-
-### Global Styles
-
-Apply global styles to your application:
-
-```javascript
-import { globalCSS, darkTheme, lightTheme } from '@akaoio/ui'
-
-// Apply global styles
-document.head.appendChild(globalCSS)
-
-// Apply theme
-document.head.appendChild(darkTheme) // or lightTheme
-```
-
-### Animation Utilities
-
-```javascript
-import { animations } from '@akaoio/ui'
-
-const styles = css`
-    ${animations.fadeIn}
+    /* Typography */
+    --font-family: system-ui, sans-serif;
+    --font-size-base: 16px;
     
-    :host {
-        animation: fadeIn 0.3s ease-in;
-    }
-`
-```
-
-## 🔧 Advanced Features
-
-### Reactive Properties
-
-```javascript
-class Counter extends Component {
-    static get observedAttributes() {
-        return ['count']
-    }
+    /* Borders */
+    --border-radius: 8px;
+    --border-color: #e2e8f0;
     
-    constructor() {
-        super()
-        this.count = 0
-    }
-    
-    attributeChangedCallback(name, oldValue, newValue) {
-        if (name === 'count') {
-            this.render()
-        }
-    }
-    
-    increment = () => {
-        this.setAttribute('count', ++this.count)
-    }
+    /* Shadows */
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
+    --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
 }
 ```
 
-### Event Handling
+## 🛠️ Development
 
-```javascript
-class Interactive extends Component {
-    connectedCallback() {
-        this.addListener(
-            this.$('button'),
-            'click',
-            this.handleClick
-        )
-    }
-    
-    handleClick = (e) => {
-        console.log('Clicked!')
-    }
-}
+### Setup
+```bash
+# Clone the repository
+git clone https://github.com/akaoio/ui.git
+cd ui
+
+# Install dependencies
+npm install
+
+# Start development server (showcase)
+npm run dev
+
+# Or run examples
+npm run dev:examples
 ```
 
-### Lifecycle Methods
+### Scripts
+- `npm run dev` - Start showcase development server
+- `npm run dev:examples` - Start examples server
+- `npm run format` - Format code with Prettier
+- `npm run publish:npm` - Publish to NPM
 
-```javascript
-class Lifecycle extends Component {
-    connectedCallback() {
-        // Called when added to DOM
-        console.log('Connected!')
-    }
-    
-    disconnectedCallback() {
-        // Called when removed from DOM
-        console.log('Disconnected!')
-    }
-    
-    adoptedCallback() {
-        // Called when moved to new document
-        console.log('Adopted!')
-    }
-}
-```
-
-## 🏗️ Project Structure
-
+### Project Structure
 ```
 @akaoio/ui/
 ├── src/
@@ -288,27 +188,181 @@ class Lifecycle extends Component {
 │   └── components/       # Built-in components
 │       ├── button/
 │       ├── modal/
+│       ├── card/
+│       ├── tabs/
 │       └── icon/
-└── examples/             # Usage examples
+├── showcase/             # Interactive documentation site
+│   ├── pages/           # Documentation pages
+│   ├── components/      # Showcase components
+│   └── router.js        # Client-side routing
+└── examples/            # Basic usage examples
+```
+
+## 📚 Documentation
+
+### Core Concepts
+- [Web Components](https://akaoio.github.io/ui/showcase/#/documentation/web-components)
+- [Shadow DOM](https://akaoio.github.io/ui/showcase/#/documentation/shadow-dom)
+- [CSS-in-JS](https://akaoio.github.io/ui/showcase/#/documentation/css-in-js)
+- [State Management](https://akaoio.github.io/ui/showcase/#/documentation/state-management)
+
+### Guides
+- [Installation](https://akaoio.github.io/ui/showcase/#/documentation/installation)
+- [Quick Start](https://akaoio.github.io/ui/showcase/#/documentation/quickstart)
+- [Custom Components](https://akaoio.github.io/ui/showcase/#/documentation/custom-components)
+- [Theming](https://akaoio.github.io/ui/showcase/#/documentation/theming)
+- [Animations](https://akaoio.github.io/ui/showcase/#/documentation/animations)
+- [TypeScript](https://akaoio.github.io/ui/showcase/#/documentation/typescript)
+
+## 🎮 Interactive Playground
+
+Try AKAO UI components directly in your browser with our [live playground](https://akaoio.github.io/ui/showcase/#/playground). Write code, see instant results, and experiment with different component configurations.
+
+## 💡 Example: Complete Component
+
+```javascript
+import { html, css } from '@akaoio/ui';
+
+class TodoList extends HTMLElement {
+    constructor() {
+        super();
+        this.attachShadow({ mode: 'open' });
+        this.todos = [];
+    }
+    
+    connectedCallback() {
+        this.render();
+    }
+    
+    addTodo(text) {
+        this.todos.push({ id: Date.now(), text, done: false });
+        this.render();
+    }
+    
+    toggleTodo(id) {
+        const todo = this.todos.find(t => t.id === id);
+        if (todo) {
+            todo.done = !todo.done;
+            this.render();
+        }
+    }
+    
+    render() {
+        this.shadowRoot.innerHTML = `
+            <style>
+                :host {
+                    display: block;
+                    font-family: system-ui, sans-serif;
+                }
+                
+                .container {
+                    max-width: 500px;
+                    padding: 20px;
+                    background: white;
+                    border-radius: 12px;
+                    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                }
+                
+                .input-group {
+                    display: flex;
+                    gap: 8px;
+                    margin-bottom: 20px;
+                }
+                
+                input {
+                    flex: 1;
+                    padding: 10px;
+                    border: 1px solid #e2e8f0;
+                    border-radius: 6px;
+                    font-size: 16px;
+                }
+                
+                button {
+                    padding: 10px 20px;
+                    background: #667eea;
+                    color: white;
+                    border: none;
+                    border-radius: 6px;
+                    cursor: pointer;
+                }
+                
+                .todo-item {
+                    display: flex;
+                    align-items: center;
+                    padding: 12px;
+                    background: #f7fafc;
+                    border-radius: 6px;
+                    margin-bottom: 8px;
+                }
+                
+                .todo-item.done {
+                    opacity: 0.6;
+                    text-decoration: line-through;
+                }
+            </style>
+            
+            <div class="container">
+                <h2>Todo List</h2>
+                <div class="input-group">
+                    <input type="text" placeholder="Add a todo..." id="todoInput">
+                    <button onclick="this.getRootNode().host.handleAdd()">Add</button>
+                </div>
+                <div class="todos">
+                    ${this.todos.map(todo => `
+                        <div class="todo-item ${todo.done ? 'done' : ''}">
+                            <input type="checkbox" 
+                                ${todo.done ? 'checked' : ''}
+                                onchange="this.getRootNode().host.toggleTodo(${todo.id})">
+                            <span>${todo.text}</span>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+    }
+    
+    handleAdd() {
+        const input = this.shadowRoot.getElementById('todoInput');
+        if (input.value.trim()) {
+            this.addTodo(input.value);
+            input.value = '';
+        }
+    }
+}
+
+customElements.define('todo-list', TodoList);
 ```
 
 ## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
 ## 📄 License
 
-MIT License - feel free to use this in your projects!
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 🙏 Acknowledgments
 
-Built with ❤️ by the AKAO team.
+- Built with love for the web platform
+- Inspired by modern component libraries
+- Thanks to all contributors and the web standards community
 
-Special thanks to the web standards community for making this possible with Web Components.
+## 🔗 Links
 
----
+- [NPM Package](https://www.npmjs.com/package/@akaoio/ui)
+- [GitHub Repository](https://github.com/akaoio/ui)
+- [Live Demo](https://akaoio.github.io/ui/)
+- [Documentation](https://akaoio.github.io/ui/showcase/#/documentation)
+- [Components](https://akaoio.github.io/ui/showcase/#/components)
+- [Playground](https://akaoio.github.io/ui/showcase/#/playground)
 
-**Why choose AKAO UI?**
+## 🌟 Why AKAO UI?
 
 - **Future Proof**: Built on web standards that will last
 - **No Lock-in**: Your components work anywhere
@@ -316,4 +370,11 @@ Special thanks to the web standards community for making this possible with Web 
 - **Simple**: No complex build tools or configurations
 - **Powerful**: Everything you need for modern UIs
 
-Start building better UIs today with AKAO! 🚀
+---
+
+<p align="center">Made with ❤️ by AKAO</p>
+<p align="center">
+  <a href="https://akaoio.github.io/ui/">Demo</a> •
+  <a href="https://akaoio.github.io/ui/showcase/#/documentation">Docs</a> •
+  <a href="https://akaoio.github.io/ui/showcase/#/playground">Playground</a>
+</p>
