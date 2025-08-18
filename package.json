@@ -1,0 +1,34 @@
+{
+  "name": "@akaoio/ui",
+  "version": "1.0.0",
+  "description": "A powerful vanilla JavaScript UI framework with Web Components",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "live-server --port=3000 --open=/examples/",
+    "format": "prettier --write \"src/**/*.js\" \"examples/**/*.js\""
+  },
+  "keywords": [
+    "ui",
+    "framework",
+    "web-components",
+    "vanilla-js",
+    "css-in-js",
+    "shadow-dom",
+    "no-framework"
+  ],
+  "author": "AKAO",
+  "license": "MIT",
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "prettier": "^3.3.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akaoio/akao.io.git"
+  },
+  "bugs": {
+    "url": "https://github.com/akaoio/akao.io/issues"
+  },
+  "homepage": "https://github.com/akaoio/akao.io#readme"
+}
