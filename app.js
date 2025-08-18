@@ -74,7 +74,7 @@ class App {
   }
 
   async init() {
-    await init();
+    // await init(); // CSS is now loaded via <link> tag
 
     // Apply theme
     document.documentElement.setAttribute("data-theme", this.theme);
