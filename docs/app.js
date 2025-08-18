@@ -1,4 +1,4 @@
-import { html, css, init, render } from '../src/index.js';
+import { html, css, init, render } from './src/index.js';
 import { Router } from './router.js';
 import { Layout } from './components/Layout.js';
 import { HomePage } from './pages/Home.js';
