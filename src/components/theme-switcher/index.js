@@ -114,6 +114,6 @@ export class ThemeSwitcher extends HTMLElement {
   }
 }
 
-customElements.define('theme-switcher', YinYang);
+customElements.define('theme-switcher', ThemeSwitcher);
 
 export default ThemeSwitcher;
