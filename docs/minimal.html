@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Minimal Test</title>
+</head>
+<body>
+    <h1>Minimal AKAO Test</h1>
+    <div id="status">Loading...</div>
+    
+    <script type="module">
+        document.getElementById('status').textContent = 'JavaScript is working!';
+        
+        // Test basic import
+        try {
+            const { html } = await import('./src/core/UI/html.js');
+            document.getElementById('status').textContent = 'html import successful!';
+            document.getElementById('status').style.color = 'green';
+        } catch (error) {
+            document.getElementById('status').textContent = 'Error: ' + error.message;
+            document.getElementById('status').style.color = 'red';
+            console.error('Import error:', error);
+        }
+    </script>
+</body>
+</html>
