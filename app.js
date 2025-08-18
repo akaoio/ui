@@ -1,6 +1,7 @@
 import { html, css, init, render } from "./src/index.js";
-import "./src/components/theme-switcher/index.js";
-import "./src/components/circle-nav/index.js";
+import "./src/components/navigator/index.js";
+import "./src/components/themes/index.js";
+import "./src/components/icon/index.js";
 
 // Simple Router
 class Router {
@@ -97,17 +98,7 @@ class App {
     const content = document.getElementById("content");
     this.router.start(content);
     
-    // Setup theme switcher
-    setTimeout(() => {
-      const themeSwitcher = document.getElementById("themeSwitcher");
-      if (themeSwitcher) {
-        themeSwitcher.addEventListener("theme-change", (e) => {
-          this.theme = e.detail.theme;
-          document.documentElement.setAttribute("data-theme", this.theme);
-          localStorage.setItem("theme", this.theme);
-        });
-      }
-    }, 100);
+    // Theme is now handled by ui-themes component directly
   }
 
   toggleTheme() {
@@ -137,10 +128,7 @@ class App {
               </nav>
 
               <div class="header-actions">
-                <theme-switcher 
-                  id="themeSwitcher"
-                  theme="${this.theme}"
-                ></theme-switcher>
+                <ui-themes id="themeSwitcher"></ui-themes>
                 <a
                   href="https://github.com/akaoio/ui"
                   class="github-link"
@@ -156,35 +144,17 @@ class App {
         <main id="content" class="app-content"></main>
 
         <footer class="app-footer">
-          <div class="container">
-            <div class="footer-content">
-              <div class="footer-section">
-                <h4>Resources</h4>
-                <a href="/documentation">Documentation</a>
-                <a href="/components">Components</a>
-                <a href="/examples">Examples</a>
-              </div>
-              <div class="footer-section">
-                <h4>Community</h4>
-                <a href="https://github.com/akaoio/ui" target="_blank"
-                  >GitHub</a
-                >
-                <a href="https://npmjs.com/package/@akaoio/ui" target="_blank"
-                  >NPM</a
-                >
-              </div>
-              <div class="footer-section">
-                <h4>About</h4>
-                <p>
-                  AKAO UI - A modern, dependency-free UI framework built with
-                  vanilla JavaScript
-                </p>
-              </div>
-            </div>
-            <div class="footer-bottom">
-              <p>© 2024 AKAO UI. MIT License.</p>
-            </div>
-          </div>
+          <ui-navigator>
+            <a href="/"><ui-icon icon="/images/icons/house.svg"></ui-icon></a>
+            <a href="/components"><ui-icon icon="/images/icons/code.svg"></ui-icon></a>
+            <a href="/documentation"><ui-icon icon="/images/icons/book.svg"></ui-icon></a>
+            <a href="/playground"><ui-icon icon="/images/icons/play.svg"></ui-icon></a>
+            <ui-navigator icon="/images/icons/sliders.svg">
+              <ui-themes></ui-themes>
+              <a href="/templates"><ui-icon icon="/images/icons/template.svg"></ui-icon></a>
+              <a href="/examples"><ui-icon icon="/images/icons/examples.svg"></ui-icon></a>
+            </ui-navigator>
+          </ui-navigator>
         </footer>
       </div>
     `;
