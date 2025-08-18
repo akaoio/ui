@@ -191,7 +191,7 @@ npm run dev:examples
 │       ├── card/
 │       ├── tabs/
 │       └── icon/
-├── showcase/             # Interactive documentation site
+├── docs/                 # Interactive documentation site
 │   ├── pages/           # Documentation pages
 │   ├── components/      # Showcase components
 │   └── router.js        # Client-side routing
@@ -201,22 +201,22 @@ npm run dev:examples
 ## 📚 Documentation
 
 ### Core Concepts
-- [Web Components](https://akaoio.github.io/ui/showcase/#/documentation/web-components)
-- [Shadow DOM](https://akaoio.github.io/ui/showcase/#/documentation/shadow-dom)
-- [CSS-in-JS](https://akaoio.github.io/ui/showcase/#/documentation/css-in-js)
-- [State Management](https://akaoio.github.io/ui/showcase/#/documentation/state-management)
+- [Web Components](https://akaoio.github.io/ui/#/documentation/web-components)
+- [Shadow DOM](https://akaoio.github.io/ui/#/documentation/shadow-dom)
+- [CSS-in-JS](https://akaoio.github.io/ui/#/documentation/css-in-js)
+- [State Management](https://akaoio.github.io/ui/#/documentation/state-management)
 
 ### Guides
-- [Installation](https://akaoio.github.io/ui/showcase/#/documentation/installation)
-- [Quick Start](https://akaoio.github.io/ui/showcase/#/documentation/quickstart)
-- [Custom Components](https://akaoio.github.io/ui/showcase/#/documentation/custom-components)
-- [Theming](https://akaoio.github.io/ui/showcase/#/documentation/theming)
-- [Animations](https://akaoio.github.io/ui/showcase/#/documentation/animations)
-- [TypeScript](https://akaoio.github.io/ui/showcase/#/documentation/typescript)
+- [Installation](https://akaoio.github.io/ui/#/documentation/installation)
+- [Quick Start](https://akaoio.github.io/ui/#/documentation/quickstart)
+- [Custom Components](https://akaoio.github.io/ui/#/documentation/custom-components)
+- [Theming](https://akaoio.github.io/ui/#/documentation/theming)
+- [Animations](https://akaoio.github.io/ui/#/documentation/animations)
+- [TypeScript](https://akaoio.github.io/ui/#/documentation/typescript)
 
 ## 🎮 Interactive Playground
 
-Try AKAO UI components directly in your browser with our [live playground](https://akaoio.github.io/ui/showcase/#/playground). Write code, see instant results, and experiment with different component configurations.
+Try AKAO UI components directly in your browser with our [live playground](https://akaoio.github.io/ui/#/playground). Write code, see instant results, and experiment with different component configurations.
 
 ## 💡 Example: Complete Component
 
@@ -358,9 +358,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [NPM Package](https://www.npmjs.com/package/@akaoio/ui)
 - [GitHub Repository](https://github.com/akaoio/ui)
 - [Live Demo](https://akaoio.github.io/ui/)
-- [Documentation](https://akaoio.github.io/ui/showcase/#/documentation)
-- [Components](https://akaoio.github.io/ui/showcase/#/components)
-- [Playground](https://akaoio.github.io/ui/showcase/#/playground)
+- [Documentation](https://akaoio.github.io/ui/#/documentation)
+- [Components](https://akaoio.github.io/ui/#/components)
+- [Playground](https://akaoio.github.io/ui/#/playground)
 
 ## 🌟 Why AKAO UI?
 
@@ -375,6 +375,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 <p align="center">Made with ❤️ by AKAO</p>
 <p align="center">
   <a href="https://akaoio.github.io/ui/">Demo</a> •
-  <a href="https://akaoio.github.io/ui/showcase/#/documentation">Docs</a> •
-  <a href="https://akaoio.github.io/ui/showcase/#/playground">Playground</a>
+  <a href="https://akaoio.github.io/ui/#/documentation">Docs</a> •
+  <a href="https://akaoio.github.io/ui/#/playground">Playground</a>
 </p>
