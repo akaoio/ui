@@ -15,5 +15,9 @@ export { default as vars } from "./css/vars.css.js";
 // Component utilities
 export { Component } from "./core/Component.js";
 
+// Advanced Components
+export { YinYang } from "./components/yin-yang/index.js";
+export { CircleNav } from "./components/circle-nav/index.js";
+
 // Version
-export const version = "1.0.0";
+export const version = "1.1.0";

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AKAO UI - Advanced Components Demo</title>
+    <link rel="stylesheet" href="./styles.css">
+    <style>
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .demo-section {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        .demo-section h2 {
+            margin: 0 0 30px 0;
+            color: #333;
+        }
+
+        .theme-demo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .theme-indicator {
+            font-size: 24px;
+            color: #666;
+        }
+
+        .nav-demo {
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Override for demo */
+        circle-nav {
+            --size: 400px;
+            --radius: 150px;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-section">
+        <h2>Yin-Yang Theme Switcher</h2>
+        <div class="theme-demo">
+            <span class="theme-indicator">Light</span>
+            <yin-yang id="themeSwitcher"></yin-yang>
+            <span class="theme-indicator">Dark</span>
+        </div>
+        <p style="margin-top: 20px; color: #666;">Click to toggle theme</p>
+    </div>
+
+    <div class="demo-section">
+        <h2>Circle Navigation Menu</h2>
+        <div class="nav-demo">
+            <circle-nav id="circleNav"></circle-nav>
+        </div>
+        <p style="color: #666;">Click center button to open menu</p>
+    </div>
+
+    <script type="module">
+        import './src/components/yin-yang/index.js';
+        import './src/components/circle-nav/index.js';
+
+        // Setup Yin-Yang Theme Switcher
+        const themeSwitcher = document.getElementById('themeSwitcher');
+        themeSwitcher.addEventListener('theme-change', (e) => {
+            document.documentElement.setAttribute('data-theme', e.detail.theme);
+            console.log('Theme changed to:', e.detail.theme);
+        });
+
+        // Setup Circle Navigation
+        const circleNav = document.getElementById('circleNav');
+        const navItems = [
+            { icon: '🏠', label: 'Home', href: '/' },
+            { icon: '📊', label: 'Dashboard', href: '/dashboard' },
+            { icon: '👤', label: 'Profile', href: '/profile' },
+            { icon: '⚙️', label: 'Settings', href: '/settings' },
+            { icon: '📧', label: 'Messages', href: '/messages' },
+            { icon: '🔔', label: 'Notifications', href: '/notifications' },
+            { icon: '💳', label: 'Wallet', href: '/wallet' },
+            { icon: '📈', label: 'Analytics', href: '/analytics' }
+        ];
+        
+        circleNav.setAttribute('items', JSON.stringify(navItems));
+        
+        circleNav.addEventListener('nav-click', (e) => {
+            console.log('Navigation clicked:', e.detail.href);
+        });
+    </script>
+</body>
+</html>
