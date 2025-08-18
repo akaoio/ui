@@ -134,8 +134,8 @@ class MyButton extends Component {
           <div class="advanced-showcase">
             <div class="showcase-row">
               <div class="showcase-item">
-                <h3>Yin-Yang Theme Switcher</h3>
-                <yin-yang></yin-yang>
+                <h3>Theme Switcher</h3>
+                <theme-switcher></theme-switcher>
                 <p>Elegant theme toggle with rotation animation</p>
               </div>
               
@@ -210,7 +210,7 @@ class MyButton extends Component {
       
       <script type="module">
         // Import and setup advanced components
-        import '../src/components/yin-yang/index.js';
+        import '../src/components/theme-switcher/index.js';
         import '../src/components/progress/index.js';
         import '../src/components/tooltip/index.js';
         import '../src/components/circle-nav/index.js';

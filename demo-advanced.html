@@ -57,10 +57,10 @@
 </head>
 <body>
     <div class="demo-section">
-        <h2>Yin-Yang Theme Switcher</h2>
+        <h2>Theme Switcher</h2>
         <div class="theme-demo">
             <span class="theme-indicator">Light</span>
-            <yin-yang id="themeSwitcher"></yin-yang>
+            <theme-switcher id="themeSwitcher"></theme-switcher>
             <span class="theme-indicator">Dark</span>
         </div>
         <p style="margin-top: 20px; color: #666;">Click to toggle theme</p>
@@ -75,10 +75,10 @@
     </div>
 
     <script type="module">
-        import './src/components/yin-yang/index.js';
+        import './src/components/theme-switcher/index.js';
         import './src/components/circle-nav/index.js';
 
-        // Setup Yin-Yang Theme Switcher
+        // Setup Theme Switcher
         const themeSwitcher = document.getElementById('themeSwitcher');
         themeSwitcher.addEventListener('theme-change', (e) => {
             document.documentElement.setAttribute('data-theme', e.detail.theme);

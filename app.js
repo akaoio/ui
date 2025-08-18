@@ -1,5 +1,5 @@
 import { html, css, init, render } from "./src/index.js";
-import "./src/components/yin-yang/index.js";
+import "./src/components/theme-switcher/index.js";
 import "./src/components/circle-nav/index.js";
 
 // Simple Router
@@ -97,7 +97,7 @@ class App {
     const content = document.getElementById("content");
     this.router.start(content);
     
-    // Setup YinYang theme switcher
+    // Setup theme switcher
     setTimeout(() => {
       const themeSwitcher = document.getElementById("themeSwitcher");
       if (themeSwitcher) {
@@ -137,10 +137,10 @@ class App {
               </nav>
 
               <div class="header-actions">
-                <yin-yang 
+                <theme-switcher 
                   id="themeSwitcher"
                   theme="${this.theme}"
-                ></yin-yang>
+                ></theme-switcher>
                 <a
                   href="https://github.com/akaoio/ui"
                   class="github-link"

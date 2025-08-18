@@ -16,8 +16,10 @@ export { default as vars } from "./css/vars.css.js";
 export { Component } from "./core/Component.js";
 
 // Advanced Components
-export { YinYang } from "./components/yin-yang/index.js";
+export { ThemeSwitcher } from "./components/theme-switcher/index.js";
 export { CircleNav } from "./components/circle-nav/index.js";
+export { Tooltip } from "./components/tooltip/index.js";
+export { Progress } from "./components/progress/index.js";
 
 // Version
 export const version = "1.1.0";
