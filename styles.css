@@ -283,6 +283,28 @@ body {
   cursor: pointer;
 }
 
+/* Header Actions */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.github-link {
+  color: var(--color);
+  text-decoration: none;
+  padding: 8px 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: all var(--speed);
+}
+
+.github-link:hover {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
 /* Utility Classes */
 .text-center { text-align: center; }
 .text-left { text-align: left; }

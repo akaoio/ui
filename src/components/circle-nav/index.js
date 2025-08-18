@@ -38,10 +38,10 @@ export class CircleNav extends HTMLElement {
         :host {
           display: inline-block;
           position: relative;
-          --size: 300px;
-          --center-size: 80px;
-          --item-size: 50px;
-          --radius: 100px;
+          --size: 250px;
+          --center-size: 60px;
+          --item-size: 40px;
+          --radius: 80px;
         }
 
         .circle-nav {
@@ -79,8 +79,8 @@ export class CircleNav extends HTMLElement {
         }
 
         .hamburger {
-          width: 30px;
-          height: 20px;
+          width: 24px;
+          height: 16px;
           position: relative;
           transition: all 0.3s ease;
         }
@@ -89,9 +89,9 @@ export class CircleNav extends HTMLElement {
           position: absolute;
           left: 0;
           width: 100%;
-          height: 3px;
+          height: 2px;
           background: white;
-          border-radius: 3px;
+          border-radius: 2px;
           transition: all 0.3s ease;
         }
 

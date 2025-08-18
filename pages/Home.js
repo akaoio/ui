@@ -135,7 +135,9 @@ class MyButton extends Component {
             <div class="showcase-row">
               <div class="showcase-item">
                 <h3>Theme Switcher</h3>
-                <theme-switcher></theme-switcher>
+                <div style="transform: scale(1.5); margin: 20px 0;">
+                  <theme-switcher></theme-switcher>
+                </div>
                 <p>Elegant theme toggle with rotation animation</p>
               </div>
               
@@ -165,10 +167,10 @@ class MyButton extends Component {
             <div class="showcase-row">
               <div class="showcase-item full-width">
                 <h3>Circle Navigation Menu</h3>
-                <div style="height: 350px; position: relative;">
-                  <circle-nav id="demoNav" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"></circle-nav>
+                <div style="height: 300px; display: flex; align-items: center; justify-content: center;">
+                  <circle-nav id="demoNav"></circle-nav>
                 </div>
-                <p>Expandable circular menu with smooth animations</p>
+                <p>Click the center button to expand the circular menu</p>
               </div>
             </div>
           </div>
