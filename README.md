@@ -17,8 +17,23 @@ A powerful, lightweight vanilla JavaScript UI framework built on Web Components 
 
 ### Installation
 
+#### From NPM Registry
 ```bash
 npm install @akaoio/ui
+```
+
+#### From GitHub (Latest)
+```bash
+npm install github:akaoio/ui
+# or
+npm install https://github.com/akaoio/ui.git
+```
+
+#### Via CDN
+```html
+<script type="module">
+  import { html, css, Component } from 'https://unpkg.com/@akaoio/ui/src/index.js'
+</script>
 ```
 
 ### Basic Usage

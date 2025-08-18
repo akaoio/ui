@@ -4,9 +4,28 @@
   "description": "A powerful vanilla JavaScript UI framework with Web Components",
   "type": "module",
   "main": "src/index.js",
+  "module": "src/index.js",
+  "exports": {
+    ".": {
+      "import": "./src/index.js"
+    },
+    "./css": {
+      "import": "./src/css/index.js"
+    },
+    "./components/*": {
+      "import": "./src/components/*/index.js"
+    }
+  },
+  "files": [
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
     "dev": "live-server --port=3000 --open=/examples/",
-    "format": "prettier --write \"src/**/*.js\" \"examples/**/*.js\""
+    "format": "prettier --write \"src/**/*.js\" \"examples/**/*.js\"",
+    "prepublishOnly": "npm run format",
+    "publish:npm": "npm publish --access public"
   },
   "keywords": [
     "ui",
