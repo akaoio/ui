@@ -97,7 +97,7 @@ class App {
     // Start router
     const content = document.getElementById("content");
     this.router.start(content);
-    
+
     // Theme is now handled by ui-themes component directly
   }
 
@@ -146,13 +146,23 @@ class App {
         <footer class="app-footer">
           <ui-navigator>
             <a href="/"><ui-icon icon="./images/icons/house.svg"></ui-icon></a>
-            <a href="/components"><ui-icon icon="./images/icons/code.svg"></ui-icon></a>
-            <a href="/documentation"><ui-icon icon="./images/icons/book.svg"></ui-icon></a>
-            <a href="/playground"><ui-icon icon="./images/icons/play.svg"></ui-icon></a>
+            <a href="/components"
+              ><ui-icon icon="./images/icons/code.svg"></ui-icon
+            ></a>
+            <a href="/documentation"
+              ><ui-icon icon="./images/icons/book.svg"></ui-icon
+            ></a>
+            <a href="/playground"
+              ><ui-icon icon="./images/icons/play.svg"></ui-icon
+            ></a>
             <ui-navigator icon="./images/icons/sliders.svg">
               <ui-themes></ui-themes>
-              <a href="/templates"><ui-icon icon="./images/icons/template.svg"></ui-icon></a>
-              <a href="/examples"><ui-icon icon="./images/icons/examples.svg"></ui-icon></a>
+              <a href="/templates"
+                ><ui-icon icon="./images/icons/template.svg"></ui-icon
+              ></a>
+              <a href="/examples"
+                ><ui-icon icon="./images/icons/examples.svg"></ui-icon
+              ></a>
             </ui-navigator>
           </ui-navigator>
         </footer>

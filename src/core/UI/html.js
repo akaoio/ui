@@ -47,7 +47,7 @@ export function html(strings, ...values) {
         return match;
       }
       // Otherwise, convert to opening and closing tags
-      return '<' + group + '></' + tagName + '>';
+      return "<" + group + "></" + tagName + ">";
     },
   );
 

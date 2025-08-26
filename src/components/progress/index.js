@@ -4,34 +4,34 @@
 export class Progress extends HTMLElement {
   constructor() {
     super();
-    this.attachShadow({ mode: 'open' });
+    this.attachShadow({ mode: "open" });
     this._value = 0;
     this._max = 100;
-    this._type = 'bar'; // bar, circle, dots
-    this._color = '#667eea';
+    this._type = "bar"; // bar, circle, dots
+    this._color = "#667eea";
     this._animated = true;
   }
 
   static get observedAttributes() {
-    return ['value', 'max', 'type', 'color', 'animated'];
+    return ["value", "max", "type", "color", "animated"];
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
-    switch(name) {
-      case 'value':
+    switch (name) {
+      case "value":
         this._value = Number(newValue) || 0;
         break;
-      case 'max':
+      case "max":
         this._max = Number(newValue) || 100;
         break;
-      case 'type':
-        this._type = newValue || 'bar';
+      case "type":
+        this._type = newValue || "bar";
         break;
-      case 'color':
-        this._color = newValue || '#667eea';
+      case "color":
+        this._color = newValue || "#667eea";
         break;
-      case 'animated':
-        this._animated = newValue !== 'false';
+      case "animated":
+        this._animated = newValue !== "false";
         break;
     }
     this.render();
@@ -66,7 +66,7 @@ export class Progress extends HTMLElement {
           height: 100%;
           background: ${this._color};
           border-radius: 4px;
-          transition: ${this._animated ? 'width 0.5s ease' : 'none'};
+          transition: ${this._animated ? "width 0.5s ease" : "none"};
           position: relative;
           overflow: hidden;
         }
@@ -84,7 +84,7 @@ export class Progress extends HTMLElement {
             rgba(255, 255, 255, 0.3),
             transparent
           );
-          animation: ${this._animated ? 'shimmer 2s infinite' : 'none'};
+          animation: ${this._animated ? "shimmer 2s infinite" : "none"};
         }
 
         @keyframes shimmer {
@@ -115,7 +115,7 @@ export class Progress extends HTMLElement {
           stroke-linecap: round;
           stroke-dasharray: 339.292;
           stroke-dashoffset: 339.292;
-          transition: ${this._animated ? 'stroke-dashoffset 0.5s ease' : 'none'};
+          transition: ${this._animated ? "stroke-dashoffset 0.5s ease" : "none"};
         }
 
         .progress-text {
@@ -140,7 +140,7 @@ export class Progress extends HTMLElement {
           height: 12px;
           border-radius: 50%;
           background: #e2e8f0;
-          animation: ${this._animated ? 'pulse 1.5s infinite' : 'none'};
+          animation: ${this._animated ? "pulse 1.5s infinite" : "none"};
         }
 
         .dot.active {
@@ -172,8 +172,8 @@ export class Progress extends HTMLElement {
   }
 
   renderProgress(percentage) {
-    switch(this._type) {
-      case 'circle':
+    switch (this._type) {
+      case "circle":
         return `
           <div class="progress-circle">
             <svg width="120" height="120">
@@ -183,18 +183,20 @@ export class Progress extends HTMLElement {
             <div class="progress-text">${Math.round(percentage)}%</div>
           </div>
         `;
-      
-      case 'dots':
+
+      case "dots":
         const dotCount = 5;
         const activeDots = Math.round((percentage / 100) * dotCount);
         return `
           <div class="progress-dots">
-            ${Array.from({length: dotCount}, (_, i) => 
-              `<div class="dot ${i < activeDots ? 'active' : ''}"></div>`
-            ).join('')}
+            ${Array.from(
+              { length: dotCount },
+              (_, i) =>
+                `<div class="dot ${i < activeDots ? "active" : ""}"></div>`,
+            ).join("")}
           </div>
         `;
-      
+
       default: // bar
         return `
           <div class="progress-bar">
@@ -211,14 +213,14 @@ export class Progress extends HTMLElement {
   updateProgress() {
     requestAnimationFrame(() => {
       const percentage = (this._value / this._max) * 100;
-      
-      if (this._type === 'bar') {
-        const fill = this.shadowRoot.querySelector('.progress-fill');
+
+      if (this._type === "bar") {
+        const fill = this.shadowRoot.querySelector(".progress-fill");
         if (fill) {
           fill.style.width = `${percentage}%`;
         }
-      } else if (this._type === 'circle') {
-        const circle = this.shadowRoot.querySelector('.progress-circle-fill');
+      } else if (this._type === "circle") {
+        const circle = this.shadowRoot.querySelector(".progress-circle-fill");
         if (circle) {
           const circumference = 2 * Math.PI * 54;
           const offset = circumference - (percentage / 100) * circumference;
@@ -229,7 +231,7 @@ export class Progress extends HTMLElement {
   }
 
   set value(val) {
-    this.setAttribute('value', val);
+    this.setAttribute("value", val);
   }
 
   get value() {
@@ -237,6 +239,6 @@ export class Progress extends HTMLElement {
   }
 }
 
-customElements.define('ui-progress', Progress);
+customElements.define("ui-progress", Progress);
 
 export default Progress;

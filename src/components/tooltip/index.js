@@ -4,26 +4,26 @@
 export class Tooltip extends HTMLElement {
   constructor() {
     super();
-    this.attachShadow({ mode: 'open' });
-    this._text = '';
-    this._position = 'top';
+    this.attachShadow({ mode: "open" });
+    this._text = "";
+    this._position = "top";
     this._visible = false;
   }
 
   static get observedAttributes() {
-    return ['text', 'position', 'visible'];
+    return ["text", "position", "visible"];
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
-    switch(name) {
-      case 'text':
+    switch (name) {
+      case "text":
         this._text = newValue;
         break;
-      case 'position':
+      case "position":
         this._position = newValue;
         break;
-      case 'visible':
-        this._visible = newValue === 'true';
+      case "visible":
+        this._visible = newValue === "true";
         break;
     }
     this.render();
@@ -144,26 +144,26 @@ export class Tooltip extends HTMLElement {
         }
       </style>
       <slot></slot>
-      <div class="tooltip ${this._position} ${this._visible ? 'visible' : ''}">
+      <div class="tooltip ${this._position} ${this._visible ? "visible" : ""}">
         ${this._text}
       </div>
     `;
   }
 
   setupEventListeners() {
-    this.addEventListener('mouseenter', () => this.show());
-    this.addEventListener('mouseleave', () => this.hide());
+    this.addEventListener("mouseenter", () => this.show());
+    this.addEventListener("mouseleave", () => this.hide());
   }
 
   show() {
-    this.setAttribute('visible', 'true');
+    this.setAttribute("visible", "true");
   }
 
   hide() {
-    this.setAttribute('visible', 'false');
+    this.setAttribute("visible", "false");
   }
 }
 
-customElements.define('ui-tooltip', Tooltip);
+customElements.define("ui-tooltip", Tooltip);
 
 export default Tooltip;

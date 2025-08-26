@@ -129,7 +129,7 @@ class MyButton extends Component {
           <p class="section-subtitle">
             Beautiful, interactive components with pure CSS animations
           </p>
-          
+
           <!-- Advanced Components Demo -->
           <div class="advanced-showcase">
             <div class="showcase-row">
@@ -140,16 +140,24 @@ class MyButton extends Component {
                 </div>
                 <p>Elegant theme toggle with rotation animation</p>
               </div>
-              
+
               <div class="showcase-item">
                 <h3>Progress Indicators</h3>
-                <ui-progress value="75" type="bar" color="#667eea"></ui-progress>
+                <ui-progress
+                  value="75"
+                  type="bar"
+                  color="#667eea"
+                ></ui-progress>
                 <div style="margin-top: 20px;">
-                  <ui-progress value="60" type="circle" color="#764ba2"></ui-progress>
+                  <ui-progress
+                    value="60"
+                    type="circle"
+                    color="#764ba2"
+                  ></ui-progress>
                 </div>
                 <p>Multiple styles: bar, circle, dots</p>
               </div>
-              
+
               <div class="showcase-item">
                 <h3>Interactive Tooltips</h3>
                 <div style="display: flex; gap: 20px; justify-content: center;">
@@ -167,7 +175,9 @@ class MyButton extends Component {
             <div class="showcase-row">
               <div class="showcase-item full-width">
                 <h3>Circle Navigation Menu</h3>
-                <div style="height: 300px; display: flex; align-items: center; justify-content: center;">
+                <div
+                  style="height: 300px; display: flex; align-items: center; justify-content: center;"
+                >
                   <circle-nav id="demoNav"></circle-nav>
                 </div>
                 <p>Click the center button to expand the circular menu</p>
@@ -201,7 +211,7 @@ class MyButton extends Component {
               </div>
             </div>
           </div>
-          
+
           <div class="showcase-actions">
             <a href="/components" class="button primary">
               Explore All Components →
@@ -209,27 +219,27 @@ class MyButton extends Component {
           </div>
         </div>
       </section>
-      
+
       <script type="module">
         // Import and setup advanced components
-        import '../src/components/theme-switcher/index.js';
-        import '../src/components/progress/index.js';
-        import '../src/components/tooltip/index.js';
-        import '../src/components/circle-nav/index.js';
-        
+        import "../src/components/theme-switcher/index.js";
+        import "../src/components/progress/index.js";
+        import "../src/components/tooltip/index.js";
+        import "../src/components/circle-nav/index.js";
+
         // Setup demo circle nav
         setTimeout(() => {
-          const demoNav = document.getElementById('demoNav');
+          const demoNav = document.getElementById("demoNav");
           if (demoNav) {
             const navItems = [
-              { icon: '🏠', label: 'Home' },
-              { icon: '📊', label: 'Dashboard' },
-              { icon: '👤', label: 'Profile' },
-              { icon: '⚙️', label: 'Settings' },
-              { icon: '📧', label: 'Messages' },
-              { icon: '🔔', label: 'Notifications' }
+              { icon: "🏠", label: "Home" },
+              { icon: "📊", label: "Dashboard" },
+              { icon: "👤", label: "Profile" },
+              { icon: "⚙️", label: "Settings" },
+              { icon: "📧", label: "Messages" },
+              { icon: "🔔", label: "Notifications" },
             ];
-            demoNav.setAttribute('items', JSON.stringify(navItems));
+            demoNav.setAttribute("items", JSON.stringify(navItems));
           }
         }, 100);
       </script>

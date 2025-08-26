@@ -11,9 +11,6 @@
     },
     "./css": {
       "import": "./src/css/index.js"
-    },
-    "./components/*": {
-      "import": "./src/components/*/index.js"
     }
   },
   "files": [
