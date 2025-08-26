@@ -1,12 +1,21 @@
-title: "My Project"
-description: "A sample project using @akaoio/composer"
-name: "@my/project"
+title: "@akaoio/ui"
+description: "Powerful vanilla JavaScript UI framework with Web Components"
+name: "@akaoio/ui"
 usage: |
-  import { MyProject } from '@my/project'
+  import { UI, Component } from '@akaoio/ui'
   
-  const project = new MyProject()
-  project.run()
+  class MyComponent extends Component {
+    render() {
+      return `<div class="my-component">Hello World</div>`
+    }
+  }
+  
+  const ui = new UI()
+  ui.register('my-component', MyComponent)
 features:
-  - "Feature 1"
-  - "Feature 2" 
-  - "Feature 3"
+  - "Zero Dependencies - Pure vanilla JavaScript implementation"
+  - "Web Components - Custom elements with Shadow DOM support" 
+  - "CSS-in-JS - Style definitions as JavaScript modules"
+  - "Component System - Modular architecture with lifecycle management"
+  - "Theme Support - Built-in light/dark theme switching"
+  - "Modern Standards - ES6+ modules and web platform APIs"
